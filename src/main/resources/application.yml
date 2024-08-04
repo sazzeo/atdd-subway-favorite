@@ -1,0 +1,19 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: github-client-id
+            clientSecret: github-client-secret
+
+security:
+  jwt:
+    token:
+      secret-key: atdd-secret-key
+      expire-length: 3600000
