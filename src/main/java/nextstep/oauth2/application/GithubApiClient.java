@@ -1,7 +1,8 @@
 package nextstep.oauth2.application;
 
-import nextstep.oauth2.payload.TokenRequest;
+import nextstep.oauth2.payload.AccessTokenResponse;
 
 public interface GithubApiClient {
-    void authorize(TokenRequest request);
+    AccessTokenResponse getAccessToken(String code);
+
 }

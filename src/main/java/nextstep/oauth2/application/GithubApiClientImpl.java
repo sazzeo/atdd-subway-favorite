@@ -1,24 +1,24 @@
 package nextstep.oauth2.application;
 
-import nextstep.oauth2.payload.TokenRequest;
+import nextstep.oauth2.payload.AccessTokenResponse;
 import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 
 @Component
 public class GithubApiClientImpl implements GithubApiClient {
-
     private final OAuth2ClientProperties oAuth2ClientProperties;
+    private final String clientId;
+    private final String ClientSecret;
 
-    private final RestTemplate restTemplate;
-
-    public GithubApiClientImpl(final OAuth2ClientProperties oAuth2ClientProperties, final RestTemplate restTemplate) {
+    public GithubApiClientImpl(final OAuth2ClientProperties oAuth2ClientProperties) {
         this.oAuth2ClientProperties = oAuth2ClientProperties;
-        this.restTemplate = restTemplate;
+        OAuth2ClientProperties.Registration github = oAuth2ClientProperties.getRegistration().get("github");
+        this.clientId = github.getClientId();
+        this.ClientSecret = github.getClientSecret();
     }
 
     @Override
-    public void authorize(final TokenRequest request) {
-
+    public AccessTokenResponse getAccessToken(String code) {
+        return null;
     }
 }
